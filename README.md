@@ -1,5 +1,7 @@
 # RusticBlogger
-	
+
+<p>Basic blog website built in Rust so people can create blog posts and see them in chronological order.</p>
+ 
 #### MVP
 - Basic frontend which will have two pages. One page will be a form for the post creating and the other page will contain all blog posts made.
 - Ability to delete a post.
