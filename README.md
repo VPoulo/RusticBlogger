@@ -1,4 +1,5 @@
 # RusticBlogger
+## Vaughn Poulo
 
 <p>Basic blog website built in Rust so people can create blog posts and see them in chronological order.</p>
  
