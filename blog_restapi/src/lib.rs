@@ -6,7 +6,7 @@ use std::path::Path;
 
 /// Holds all information for a
 #[derive(Serialize, Deserialize, Debug)]
-struct Posts {
+pub struct Posts {
     author: String,
     title: String,
     body: String,
@@ -15,7 +15,7 @@ struct Posts {
 
 impl Posts {
     // Creates a new struct of information.
-    fn new(author: &str, title: &str, body: &str, date: DateTime<Utc>) -> Self {
+    pub fn new(author: &str, title: &str, body: &str, date: DateTime<Utc>) -> Self {
         let author_string = author.to_string();
         let title_string = title.to_string();
         let body_string = body.to_string();
@@ -30,7 +30,7 @@ impl Posts {
 }
 
 /// Adds a blog post to JSON file. Returns true if successfully added.
-fn create(author: &str, title: &str, body: &str) -> Result<bool, Box<dyn Error>> {
+pub fn create(author: &str, title: &str, body: &str) -> Result<bool, Box<dyn Error>> {
     let file_path = "../blog_posts_json.json";
 
     // Check if file exists, if not create it.
@@ -77,7 +77,7 @@ fn create(author: &str, title: &str, body: &str) -> Result<bool, Box<dyn Error>>
 }
 
 /// Returns all blog posts in the JSON file.
-fn read() -> Vec<Posts> {
+pub fn read() -> Vec<Posts> {
     // Read file contents
     let file_contents =
         std::fs::read_to_string("../blog_posts_json.json").expect("Could not read from file");
@@ -90,7 +90,7 @@ fn read() -> Vec<Posts> {
 
 /// Delets all blog posts from JSON file that match blog title and
 /// blog author. Returns true if deleted successfully.
-fn delete(title: &str, author: &str) -> Result<bool, Box<dyn Error>> {
+pub fn delete(title: &str, author: &str) -> Result<bool, Box<dyn Error>> {
     let file = "../blog_posts_json.json";
 
     // Read file contents
