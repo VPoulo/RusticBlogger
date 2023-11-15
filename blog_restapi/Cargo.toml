@@ -10,4 +10,10 @@ authors = ["Vaughn Poulo <vpoulo@pdx.edu>"]
 serde_json = "1.0"
 chrono = { version = "0.4", features = ["serde"] }
 serde = { version = "1", features = ["derive"] }
-tera = "1.0"
+tera = "1.11.0"
+rocket = "=0.5.0-rc.4"
+
+[dependencies.rocket_contrib]
+version = "0.4.11"
+default-features = false
+features = ["handlebars_templates", "tera_templates"]
