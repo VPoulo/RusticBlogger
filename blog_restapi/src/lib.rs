@@ -1,21 +1,21 @@
-use chrono::{DateTime, Utc};
+use chrono::{DateTime, Duration, NaiveDate, Utc};
 use serde::{Deserialize, Serialize};
 use std::error::Error;
 use std::fs::File;
 use std::path::Path;
-
 /// Holds all information for a
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Posts {
     author: String,
     title: String,
     body: String,
-    date: DateTime<Utc>,
+    date: NaiveDate,
+    //date: DateTime<Utc>,
 }
 
 impl Posts {
     // Creates a new struct of information.
-    pub fn new(author: &str, title: &str, body: &str, date: DateTime<Utc>) -> Self {
+    pub fn new(author: &str, title: &str, body: &str, date: NaiveDate) -> Self {
         let author_string = author.to_string();
         let title_string = title.to_string();
         let body_string = body.to_string();
@@ -41,8 +41,14 @@ pub fn create(author: &str, title: &str, body: &str) -> Result<bool, Box<dyn Err
         }
     }
 
+    // Convert to Pacific Standard Time.
+    let current_time: DateTime<Utc> = Utc::now() - Duration::hours(8);
+
+    // Convert to Date.
+    let naive_date: NaiveDate = current_time.date_naive();
+
     // Create blog post in json format.
-    let new_entry = Posts::new(author, title, body, Utc::now());
+    let new_entry = Posts::new(author, title, body, naive_date);
 
     // Read file contents
     let file_contents =
