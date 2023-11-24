@@ -1,17 +1,29 @@
-# RusticBlogger
-## Vaughn Poulo
+# Vaughn Poulo
 
-<p>Basic blog website built in Rust so people can create blog posts and see them in chronological order.</p>
- 
-#### MVP
-- Basic frontend which will have two pages. One page will be a form for the post creating and the other page will contain all blog posts made.
-- Ability to delete a post.
-	
- #### Goals
-- Call google oAuth API so users can login to their account.
-- Tags can be added to the post to indicate subtopics
-- Users can save posts as a draft and then see the drafts later.
-- Users can edit/update blog posts.
-- Link blog post to other posts and have the linked posts displayed as links.
-- Responsive website based on screen size.
+### 914923269
 
+### Final Project: Rustic Blogger
+
+### Rust Programming
+
+### Fall Term 2023
+
+#### Run Instructions
+
+1. Make sure you are in the **blog_code** sub-folder.
+
+2. Use **cargo run** command to start the app service.
+
+3. **click on the link** at the bottom of the terminal to launch the website locally.
+
+#### Write-up
+
+<p> My project is to create a blog website. I wrote a RestAPI as a Rust library and then used that library to add, delete, and read posts from a json file. All the posts from the blog are saved locally to a json file. I have populated the json and included it in my submission so you can see the website and how it works. I wrote the main file in Rust as well. It does the mapping to different pages and handles the routing. </p>
+
+#### Sources
+
+- https://api.rocket.rs/master/rocket_dyn_templates/
+
+- https://docs.rs/tera/latest/tera/
+
+- https://docs.rs/tera/latest/tera/
