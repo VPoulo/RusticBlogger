@@ -10,7 +10,7 @@
 
 #### Run Instructions
 
-1. Make sure you are in the **blog_code** sub-folder.
+1. Make sure you are in the **blog_restapi** sub-folder.
 
 2. Use **cargo run** command to start the app service.
 
