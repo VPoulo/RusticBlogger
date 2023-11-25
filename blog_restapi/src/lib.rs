@@ -121,5 +121,6 @@ pub fn delete(title: &str, author: &str) -> Result<bool, Box<dyn Error>> {
         Err(err) => println!("Could not add post. Error {}", err),
     }
 
+    // Return option true
     Ok(true)
 }

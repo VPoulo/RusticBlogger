@@ -52,6 +52,7 @@ fn delete(title: String, author: String) -> Redirect {
         // If new blog post successfully deleted, then re-direct to index page after.
         rocket::response::Redirect::to("/error")
     } else {
+        // Return error page if error.
         rocket::response::Redirect::to("/error")
     }
 }
