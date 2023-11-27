@@ -1,4 +1,5 @@
 use chrono::{DateTime, Duration, NaiveDate, Utc};
+//use rocket::http::hyper::body;
 use serde::{Deserialize, Serialize};
 use std::error::Error;
 use std::fs::File;
@@ -10,7 +11,6 @@ pub struct Posts {
     title: String,
     body: String,
     date: NaiveDate,
-    //date: DateTime<Utc>,
 }
 
 impl Posts {
@@ -123,4 +123,38 @@ pub fn delete(title: &str, author: &str) -> Result<bool, Box<dyn Error>> {
 
     // Return option true
     Ok(true)
+}
+
+#[test]
+fn test_create_delete() {
+    let author = "Test Person";
+    let title = "Title Test";
+    let text = "Nothing";
+
+    // Create post
+    let result = create(author, title, text);
+    assert_eq!(result.unwrap(), true);
+
+    // Delete post
+    let result: Result<bool, Box<dyn std::error::Error>> = delete(title, author);
+    assert_eq!(result.unwrap(), true);
+}
+
+#[test]
+fn test_read() {
+    let author = "Test Person";
+    let title = "Title Test";
+    let text = "Nothing";
+
+    // Create a post to make sure at least one exists.
+    let create_result = create(author, title, text);
+    assert_eq!(create_result.unwrap(), true);
+
+    // Read posts
+    let post_vec: Vec<Posts> = read();
+    assert!(post_vec.len() > 0);
+
+    // Delete post.
+    let delete_result: Result<bool, Box<dyn std::error::Error>> = delete(title, author);
+    assert_eq!(delete_result.unwrap(), true);
 }
