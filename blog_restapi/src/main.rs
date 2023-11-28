@@ -15,7 +15,7 @@ struct BlogPost {
     body: String,
 }
 
-// Load landing page with all existing blog posts.
+/// Load landing page with all existing blog posts.
 #[get("/")]
 fn index() -> Template {
     let posts: Vec<blog_restapi::Posts> = blog_restapi::read();
@@ -29,7 +29,7 @@ fn new_post_page() -> Template {
     Template::render("post", context! {})
 }
 
-// Process a new post (form) by adding it to the json file.
+/// Process a new post (form) by adding it to the json file.
 #[post("/post", data = "<post>")]
 fn new_post(post: Form<BlogPost>) -> Redirect {
     // Grab data from form.
@@ -45,7 +45,7 @@ fn new_post(post: Form<BlogPost>) -> Redirect {
     }
 }
 
-// Delete a post and redirect back to landing page.
+/// Delete a post and redirect back to landing page.
 #[delete("/delete/<title>/<author>")]
 fn delete(title: String, author: String) -> Redirect {
     if let Ok(true) = blog_restapi::delete(&title, &author) {
@@ -57,19 +57,19 @@ fn delete(title: String, author: String) -> Redirect {
     }
 }
 
-// General error
+/// General error
 #[get("/error")]
 fn error() -> Template {
     Template::render("error", context! {})
 }
 
-// Catch all internal server errors.
+/// Catch all internal server errors.
 #[catch(500)]
 fn internal_server_error() -> Template {
     Template::render("error", context! {})
 }
 
-// Lanuch the app.
+/// Lanuch the app.
 #[launch]
 fn rocket() -> _ {
     rocket::build()
